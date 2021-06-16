@@ -14,18 +14,26 @@
 
 # #Mmt.create(user_id: 1, mentor_id: 2)
 
-# Content.create(unique_id: 'algo', parent_id: nil, name: 'Algorithims', data_type: 3, link: nil, priority: 0)
-# Content.create(unique_id: 'arrays', parent_id: 'algo', name: 'Arrays', data_type: 4, link: nil, priority: 2)
-# Content.create(unique_id: 'Q1', parent_id: 'arrays', name: 'Q1', data_type: 0, link: 'https://leetcode.com/problems/palindrome-number/', priority: 3)
-# Content.create(unique_id: 'Q2', parent_id: 'arrays', name: 'Q2', data_type: 0, link: 'https://leetcode.com/problems/reverse-bits/', priority: 4)
-# Content.create(unique_id: 'warmup', parent_id: 'algo', name: 'Warmup', data_type: 4, link: nil, priority: 1)
-# Content.create(unique_id: 'Q3', parent_id: 'warmup', name: nil, data_type: 0, link: 'https://leetcode.com/problems/add-strings/', priority: 5)
-# Content.create(unique_id: 'Q4', parent_id: 'warmup', name: nil, data_type: 0, link: 'https://leetcode.com/problems/power-of-four/', priority: 6)
-# Content.create(unique_id: 'Q5', parent_id: 'warmup', name: nil, data_type: 0, link: 'https://leetcode.com/problems/convert-to-base-2/', priority: 7)
-# Content.create(unique_id: 'Q6', parent_id: 'warmup', name: nil, data_type: 0, link: 'https://leetcode.com/problems/palindrome-number/', priority: 8)
-
+# Content.create(unique_id: 'graph', parent_id: 'algo', name: 'Algorithims', data_type: 3, youtube_link: 'https://www.youtube.com/watch?v=sOT7eCKMk1w',link: 'https://leetcode.com/problems/palindrome-number/', priority: 0)
+# Content.create(unique_id: 'bfs', parent_id: 'algo', name: 'Arrays', data_type: 4, youtube_link: 'https://www.youtube.com/watch?v=sOT7eCKMk1w',link: 'https://leetcode.com/problems/palindrome-number/', priority: 2)
+# # Content.create(unique_id: 'Graphs', parent_id: 'algo', name: 'Arrays', data_type: 4, youtube_link: nil, priority: 2)
+# Content.create(unique_id: 'arrays', parent_id: 'algo', name: 'Q1', data_type: 0, youtube_link: 'https://www.youtube.com/watch?v=sOT7eCKMk1w',link: 'https://leetcode.com/problems/palindrome-number/', priority: 3)
+# Content.create(unique_id: 'arrays', parent_id: 'algo', name: 'Q2', data_type: 0, youtube_link: 'https://www.youtube.com/watch?v=sOT7eCKMk1w', link: 'https://leetcode.com/problems/reverse-bits/', priority: 4)
+# Content.create(unique_id: 'graphs', parent_id: 'algo', name: 'Warmup', data_type: 4, youtube_link: 'https://www.youtube.com/watch?v=sOT7eCKMk1w',link: 'https://leetcode.com/problems/palindrome-number/', priority: 1)
+# Content.create(unique_id: 'bfs', parent_id: 'algo', name: nil, data_type: 0, youtube_link: 'https://www.youtube.com/watch?v=sOT7eCKMk1w', link: 'https://leetcode.com/problems/add-strings/', priority: 5)
+# Content.create(unique_id: 'dp', parent_id: 'algo', name: nil, data_type: 0, youtube_link: 'https://www.youtube.com/watch?v=sOT7eCKMk1w', link: 'https://leetcode.com/problems/power-of-four/', priority: 6)
+# Content.create(unique_id: 'dp', parent_id: 'algo', name: nil, data_type: 0, youtube_link: 'https://www.youtube.com/watch?v=sOT7eCKMk1w', link: 'https://leetcode.com/problems/convert-to-base-2/', priority: 7)
+# Content.create(unique_id: 'tree', parent_id: 'algo', name: nil, data_type: 0, youtube_link: 'https://www.youtube.com/watch?v=sOT7eCKMk1w', link: 'https://leetcode.com/problems/palindrome-number/', priority: 8)
+# Content.create(unique_id: 'arrays', parent_id: 'algo', name: 'something',youtube_link: 'https://www.youtube.com/watch?v=sOT7eCKMk1d' ,data_type: 0, link: 'https://leetcode.com/problems/', priority: 11)
+# Content.create(unique_id: 'graphs', parent_id: 'algo', name: nil, data_type: 0, youtube_link: 'https://www.youtube.com/watch?v=sOT7eCKMk1w', link: 'https://leetcode.com/problems/add-strings/', priority: 5)
+# Content.create(unique_id: 'tree', parent_id: 'algo', name: nil, data_type: 0, youtube_link: 'https://www.youtube.com/watch?v=sOT7eCKMk1w', link: 'https://leetcode.com/problems/add-strings/', priority: 5)
+# Content.create(unique_id: 'dp', parent_id: 'algo', name: nil, data_type: 0, youtube_link: 'https://www.youtube.com/watch?v=sOT7eCKMk1w', link: 'https://leetcode.com/problems/add-strings/', priority: 5)
+# Content.create(unique_id: 'bfs', parent_id: 'algo', name: nil, data_type: 0, youtube_link: 'https://www.youtube.com/watch?v=sOT7eCKMk1w', link:  'https://leetcode.com/problems/add-strings/', priority: 5)
+# Content.create(unique_id: 'bfs', parent_id: 'algo', name: nil, data_type: 0, youtube_link: 'https://www.youtube.com/watch?v=sOT7eCKMk1w',link: 'https://leetcode.com/problems/add-strings/', priority: 5)
 # Content.create(unique_id: 'String', parent_id: 'algo', name: 'String', data_type: 4, link: nil, priority: 9)
 # Content.create(unique_id: 'Q7', parent_id: 'String', name: 'Longest Substring Without Repeating Characters', data_type: 0,
+# Content.create(unique_id: 'linked list', parent_id: 'algo', name: nil, data_type: 0, youtube_link: ['https://www.youtube.com/watch?v=sOT7eCKMk1w','https://www.youtube.com/watch?v=sOT7eCKMk1w'],link: 'https://leetcode.com/problems/add-strings/', priority: 5)
+
 #                link: 'https://leetcode.com/problems/longest-substring-without-repeating-characters/', priority: 10)
 # Content.create(unique_id: 'Q8', parent_id: 'String', name: 'Valid Anagram', data_type: 0, link: 'https://leetcode.com/problems/valid-anagram', priority: 11)
 # Content.create(unique_id: 'Q9', parent_id: 'String', name: 'Group Anagrams', data_type: 0, link: 'https://leetcode.com/problems/group-anagrams/', priority: 12)
@@ -42,15 +50,15 @@
 # User.create(name: 'manish', discord_id: 'abe', password: '123450', email: 'manish1250@gmail.com')
 # User.create(name: 'ajjr', discord_id: 'afd', password: '1234501', email: 'ajjr251@gmail.com')
 # User.create(name: 'test', discord_id: 'qwe', password: '1237801', email: 'test@gmail.com')
-#
+
 # User.create(name: 'neha', discord_id: 'bcde', password: '123450', email: 'neha1250@gmail.com')
 # User.create(name: 'ayushi', discord_id: 'sbcd', password: '1234501', email: 'ayushi51@gmail.com')
 # User.create(name: 'aditi', discord_id: 'qwer', password: '1237801', email: 'aditi@gmail.com')
-#
+
 # User.create(name: 'priya', discord_id: 'ccde', password: '123450', email: 'priya@gmail.com')
 # User.create(name: 'pawni', discord_id: 'fbcd', password: '1234501', email: 'pawni1251@gmail.com')
 # User.create(name: 'ayush', discord_id: 'bwer', password: '1237801', email: 'ayush@gmail.com')
-#
+
 # User.create(name: 'prachi', discord_id: 'dcde', password: '123450', email: 'prachi1250@gmail.com')
 # User.create(name: 'udit', discord_id: 'ebcd', password: '1234501', email: 'udit1251@gmail.com')
 # User.create(name: 'vedansh', discord_id: 'ywer', password: '1237801', email: 'vedansh@gmail.com')
@@ -58,4 +66,4 @@
 # Group.create(owner_id: User.last.id, name: "first one")
 # GroupMember.create(user_id: User.first.id, group_id: Group.last.id)
 # GroupMember.create(user_id: User.second.id, group_id: Group.last.id)
- Submission.create(user_id: 30, content_id: 8, status:1)
+#  Submission.create(user_id: 30, content_id: 8, status:1)
