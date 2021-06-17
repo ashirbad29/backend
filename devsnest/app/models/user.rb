@@ -8,8 +8,7 @@ class User < ApplicationRecord
   enum user_type: %i[user admin]
   after_create :create_username
   def create_username
-    curr_name = email.split('@')[0]
-    update_attribute(:username, curr_name)
+    update_attribute(:username, email.split('@')[0])
   end
 
   def self.fetch_discord_id(code)

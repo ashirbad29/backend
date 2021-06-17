@@ -74,9 +74,7 @@ module Api
       end
 
       def connect_discord
-        unless params['code'].present? || params['data']['attributes']['bot_token'].present?
-          return render_error({ message: "Please Connect with Discord or enter bot-token" })
-        end
+        return render_error({ message: 'Please Connect with Discord or enter bot-token' }) unless params['code'].present? || params['data']['attributes']['bot_token'].present?
 
         if params['code'].present?
           discord_id = User.fetch_discord_id(params['code'])
@@ -123,28 +121,23 @@ module Api
       end
 
       def update_username
-        # continue if !!params['data']['id'].match(/^\d{1,99}$/)
         id = params['data']['id']
-        unless User.find_by(id: id).username == params['data']['attributes']['username']
-          user = User.find_by(id: id)
+        user = User.find_by(id: id)
+        unless user.username == params['data']['attributes']['username']
           return render_error({ message: 'username format missmatched' }) unless !!params['data']['attributes']['username'].match(/^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{4,29}$/)
 
-          if user.update_count >= 10
+          if user.update_count >= 2
             params['data']['attributes']['username'] = user.username
           else
-            user.update_count = user.update_count + 1
+            params['data']['attributes']['update_count'] = user.update_count + 1
           end
-          user.save
+
         end
       end
 
       def get_by_username
         unless !!params['id'].match(/^\d{1,99}$/)
-          # dodging teh params/id call
-          # return render_error({ message: 'No user data found' }) unless !!params['id'].match(/^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{4,29}$/)
-
-          username = params[:id]
-          user = User.find_by(username: username)
+          user = User.find_by(username:  params[:id])
           return render_not_found unless user.present?
 
           params[:id] = user.id
