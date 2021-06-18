@@ -7,6 +7,7 @@ class User < ApplicationRecord
   after_create :create_bot_token
   enum user_type: %i[user admin]
   after_create :create_username
+
   def create_username
     update_attribute(:username, email.split('@')[0])
   end
@@ -105,5 +106,9 @@ class User < ApplicationRecord
 
   def create_bot_token
     update(bot_token: Digest::SHA1.hexdigest([Time.now, rand].join))
+  end
+
+  def check_username(username)
+    !!username.match(/^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{4,29}$/)
   end
 end

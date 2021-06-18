@@ -123,11 +123,12 @@ module Api
       def update_username
         id = params['data']['id']
         user = User.find_by(id: id)
+        return render_error({ message: 'username format missmatched' }) unless !!params['data']['attributes']['username']
+
         unless user.username == params['data']['attributes']['username']
-          return render_error({ message: 'username format missmatched' }) unless !!params['data']['attributes']['username'].match(/^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{4,29}$/)
 
           if user.update_count >= 2
-            params['data']['attributes']['username'] = user.username
+            render_error({ message: 'Update count Exceeded for username' })
           else
             params['data']['attributes']['update_count'] = user.update_count + 1
           end
@@ -136,6 +137,7 @@ module Api
       end
 
       def get_by_username
+        # byebug
         unless !!params['id'].match(/^\d{1,99}$/)
           user = User.find_by(username:  params[:id])
           return render_not_found unless user.present?
