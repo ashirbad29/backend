@@ -9,7 +9,6 @@ module Api
       before_action :user_auth, only: %i[logout me update connect_discord]
       before_action :update_college, only: %i[update]
       before_action :update_username, only: %i[update]
-      before_action :get_by_username, only: %i[show]
 
       def context
         { user: @current_user }
@@ -17,6 +16,13 @@ module Api
 
       def me
         redirect_to api_v1_user_url(@current_user)
+      end
+
+      def visit
+        user = User.find_by(username: params[:id])
+        return render_not_found unless user.present?
+
+        redirect_to api_v1_user_url(user)
       end
 
       def get_token
@@ -119,30 +125,19 @@ module Api
 
         params['data']['attributes'].delete 'college_name'
       end
-
+      
       def update_username
-        id = params['data']['id']
-        user = User.find_by(id: id)
-        return render_error({ message: 'username format missmatched' }) unless !!params['data']['attributes']['username']
+        # byebug
+        return render_error({ message: 'Unauthorized request' }) unless context[:user].id == params['data']['id'].to_i
+        return render_error({ message: 'username format missmatched' }) unless check_username(params['data']['attributes']['username'])
+        unless context[:user].username == params['data']['attributes']['username']
 
-        unless user.username == params['data']['attributes']['username']
-
-          if user.update_count >= 2
+          if context[:user].update_count >= 2
             render_error({ message: 'Update count Exceeded for username' })
           else
-            params['data']['attributes']['update_count'] = user.update_count + 1
+            params['data']['attributes']['update_count'] = context[:user].update_count + 1
           end
 
-        end
-      end
-
-      def get_by_username
-        # byebug
-        unless !!params['id'].match(/^\d{1,99}$/)
-          user = User.find_by(username:  params[:id])
-          return render_not_found unless user.present?
-
-          params[:id] = user.id
         end
       end
     end

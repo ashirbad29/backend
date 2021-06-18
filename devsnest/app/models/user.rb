@@ -108,7 +108,5 @@ class User < ApplicationRecord
     update(bot_token: Digest::SHA1.hexdigest([Time.now, rand].join))
   end
 
-  def check_username(username)
-    !!username.match(/^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{4,29}$/)
-  end
+  
 end
