@@ -18,7 +18,7 @@ module Api
         redirect_to api_v1_user_url(@current_user)
       end
 
-      def visit
+      def get_by_username
         user = User.find_by(username: params[:id])
         return render_not_found unless user.present?
 
@@ -125,19 +125,17 @@ module Api
 
         params['data']['attributes'].delete 'college_name'
       end
-      
+
       def update_username
-        # byebug
-        return render_error({ message: 'Unauthorized request' }) unless context[:user].id == params['data']['id'].to_i
-        return render_error({ message: 'username format missmatched' }) unless check_username(params['data']['attributes']['username'])
-        unless context[:user].username == params['data']['attributes']['username']
+        return render_unauthorized unless @current_user.id.to_s == params['data']['id']
+        return render_error({ message: 'Username format missmatched' }) unless check_username(params['data']['attributes']['username'])
 
-          if context[:user].update_count >= 2
-            render_error({ message: 'Update count Exceeded for username' })
-          else
-            params['data']['attributes']['update_count'] = context[:user].update_count + 1
-          end
+        return true if params['data']['attributes']['username'].nil? || context[:user].username == params['data']['attributes']['username']
 
+        if context[:user].update_count >= 2
+          render_error({ message: 'Update count Exceeded for username' })
+        else
+          params['data']['attributes']['update_count'] = context[:user].update_count + 1
         end
       end
     end
