@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_16_123930) do
+ActiveRecord::Schema.define(version: 2021_06_18_132309) do
 
   create_table "batches", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.integer "owner_id"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2021_06_16_123930) do
     t.integer "score"
     t.integer "difficulty"
     t.integer "question_type"
+    t.text "video_questions"
     t.index ["parent_id"], name: "index_contents_on_parent_id"
     t.index ["unique_id"], name: "index_contents_on_unique_id"
   end
@@ -117,8 +118,8 @@ ActiveRecord::Schema.define(version: 2021_06_16_123930) do
     t.integer "grad_start"
     t.integer "grad_end"
     t.integer "user_type", default: 0
-    t.string "bot_token"
     t.string "google_id"
+    t.string "bot_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

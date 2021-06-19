@@ -3,7 +3,7 @@
 module Api
   module V1
     class ContentResource < JSONAPI::Resource
-      attributes :unique_id, :parent_id, :name, :data_type, :link, :priority, :score, :difficulty, :question_type, :youtube_link, :reference_link
+      attributes :unique_id, :parent_id, :name, :data_type, :link, :priority, :score, :difficulty, :question_type, :reference_link, :questions_list, :video_questions
       attributes :status
 
       filter :parent_id
@@ -13,6 +13,10 @@ module Api
       filter :difficulty
       def self.default_sort
         [{ field: 'priority', direction: :asc }]
+      end
+
+      def questions_list
+        Content.where(id: video_questions.map(&:to_i)).as_json
       end
 
       def status
