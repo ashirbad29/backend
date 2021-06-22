@@ -65,18 +65,6 @@ ActiveRecord::Schema.define(version: 2021_06_20_062808) do
     t.index ["unique_id"], name: "index_contents_on_unique_id"
   end
 
-  create_table "frontend_contents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.string "name"
-    t.text "summary"
-    t.string "github_link"
-    t.string "web_view_link"
-    t.string "youtube_link"
-    t.date "project_start"
-    t.date "project_end"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "group_members", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.boolean "scrum_master"
     t.boolean "owner"
@@ -151,8 +139,8 @@ ActiveRecord::Schema.define(version: 2021_06_20_062808) do
     t.integer "grad_start"
     t.integer "grad_end"
     t.integer "user_type", default: 0
-    t.string "google_id"
     t.string "bot_token"
+    t.string "google_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
